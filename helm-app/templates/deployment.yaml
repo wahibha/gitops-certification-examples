@@ -21,6 +21,12 @@ spec:
       serviceAccountName: {{ include "helm-example.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+      - name: boucle
+        image: busybox
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        command: ["/bin/sh"]
+        args: ["-c", "sleep 60"]
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
