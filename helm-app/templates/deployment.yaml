@@ -26,7 +26,7 @@ spec:
         image: busybox
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         command: ["/bin/sh"]
-        arg: ["-c", "while true; do echo hello; sleep 10;done"]
+        args: ["-c", "while true; do echo hello; sleep 10;done"]
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
