@@ -23,7 +23,7 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
       - name: boucle
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        image: busybox
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         command: ["/bin/sh"]
         arg: ["-c", "while true; do echo hello; sleep 10;done"]
